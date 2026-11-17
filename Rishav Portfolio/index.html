@@ -1,0 +1,1526 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Rishav Kumar — Business, Creativity and Exploration.">
+<title>Rishav Kumar | Personal Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+:root {
+  --bg: #10110f;
+  --surface: #191a17;
+  --surface2: #20211d;
+  --cream: #e9e4d9;
+  --muted: #aaa69b;
+  --gold: #b89b6a;
+  --line: rgba(233,228,217,.13);
+  --font: 'DM Sans', sans-serif;
+  --serif: 'Playfair Display', serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: var(--font);
+  overflow-x: hidden;
+}
+
+body.loading {
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.container {
+  width: min(1180px, 88%);
+  margin: auto;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+
+.section {
+  padding: 115px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(40px, 6vw, 70px);
+  font-weight: 500;
+  line-height: 1.12;
+  margin-bottom: 45px;
+}
+
+.gold {
+  color: var(--gold);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* PRELOADER */
+
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .7s, visibility .7s;
+}
+
+#preloader.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-name {
+  font-family: var(--serif);
+  font-size: clamp(38px, 8vw, 75px);
+  letter-spacing: 5px;
+}
+
+.loader-line {
+  width: 150px;
+  height: 2px;
+  background: #393a34;
+  margin-top: 25px;
+  overflow: hidden;
+}
+
+.loader-progress {
+  width: 100%;
+  height: 100%;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: load 1.5s ease forwards;
+}
+
+@keyframes load {
+  to { transform: scaleX(1); }
+}
+
+.loader-caption {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 3px;
+  margin-top: 18px;
+}
+
+/* NAVIGATION */
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 21px 0;
+  background: rgba(16,17,15,.85);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid transparent;
+  transition: .3s;
+}
+
+nav.scrolled {
+  padding: 15px 0;
+  border-color: var(--line);
+}
+
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--serif);
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 29px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+  transition: .3s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  height: 1px;
+  width: 0;
+  background: var(--gold);
+  transition: .3s;
+}
+
+.nav-links a:hover {
+  color: var(--cream);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.menu-btn {
+  display: none;
+  color: var(--cream);
+  border: 0;
+  background: transparent;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background:
+    linear-gradient(90deg,
+      rgba(16,17,15,.88) 5%,
+      rgba(16,17,15,.68) 50%,
+      rgba(16,17,15,.30) 100%),
+    url('images/rishav-hero.jpg') center/cover; /* Add your own hero photo here. */
+}
+
+.hero-content {
+  padding-top: 90px;
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(65px, 11vw, 130px);
+  font-weight: 500;
+  letter-spacing: -3px;
+  line-height: .98;
+}
+
+.hero h1 span {
+  display: block;
+  color: var(--gold);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.hero-subtitle {
+  margin-top: 32px;
+  font-size: 13px;
+  letter-spacing: 3px;
+}
+
+.hero-description {
+  max-width: 510px;
+  color: #c3beb2;
+  font-size: 15px;
+  line-height: 1.9;
+  margin-top: 24px;
+}
+
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 35px;
+  padding: 15px 25px;
+  border: 1px solid var(--gold);
+  color: var(--cream);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  transition: .35s;
+}
+
+.primary-btn:hover {
+  background: var(--gold);
+  color: var(--bg);
+  transform: translateY(-3px);
+}
+
+.hero-bottom {
+  position: absolute;
+  bottom: 35px;
+  left: 6%;
+  right: 6%;
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+/* ABOUT */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 75px;
+  align-items: center;
+}
+
+.about-image {
+  width: min(100%, 430px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  justify-self: center;
+  border: 1px solid rgba(184,155,106,.45);
+  box-shadow: 0 22px 70px rgba(0,0,0,.28);
+}
+
+.about-image img {
+  height: 100%;
+  border-radius: 50%;
+  object-position: center;
+  transition: transform .8s;
+}
+
+.about-image:hover img {
+  transform: scale(1.035);
+}
+
+.about-text p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 2;
+  margin-bottom: 18px;
+}
+
+.about-quote {
+  margin-top: 30px;
+  padding-left: 20px;
+  border-left: 2px solid var(--gold);
+  font-family: var(--serif);
+  font-size: 22px;
+  font-style: italic;
+}
+
+/* EDUCATION */
+
+.education-list {
+  border-top: 1px solid var(--line);
+}
+
+.edu-item {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 25px;
+  padding: 35px 0;
+  border-bottom: 1px solid var(--line);
+  transition: .3s;
+}
+
+.edu-item:hover {
+  padding-left: 12px;
+}
+
+.edu-date {
+  color: var(--gold);
+  font-size: 12px;
+}
+
+.edu-item h3 {
+  font-family: var(--serif);
+  font-size: 23px;
+  font-weight: 500;
+  margin-bottom: 9px;
+}
+
+.edu-item p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.edu-score {
+  text-align: right;
+  color: var(--gold);
+  font-size: 14px;
+}
+
+/* PROJECT */
+
+.project-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(184,155,106,.10), transparent 38%),
+    var(--surface);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  position: relative;
+}
+
+.project-card::before {
+  content: "A";
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--serif);
+  font-size: clamp(180px, 28vw, 360px);
+  line-height: 1;
+  color: rgba(184,155,106,.045);
+  pointer-events: none;
+}
+
+.project-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.project-info {
+  width: min(100%, 900px);
+  padding: clamp(35px, 7vw, 85px);
+  align-self: center;
+}
+
+.project-info h3 {
+  font-family: var(--serif);
+  font-size: clamp(42px, 5vw, 65px);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.project-info p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
+  margin-top: 20px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.tag {
+  padding: 9px 13px;
+  border: 1px solid var(--line);
+  font-size: 10px;
+  color: var(--gold);
+}
+
+.text-link {
+  display: inline-block;
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-top: 30px;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 6px;
+  transition: .3s;
+}
+
+.text-link:hover {
+  color: var(--cream);
+}
+
+/* CREATIVE SIDE */
+
+.creative-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.creative-card {
+  height: 390px;
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.creative-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(.65);
+  transition: transform .7s, filter .7s;
+}
+
+.creative-card:hover img {
+  transform: scale(1.08);
+  filter: brightness(.4);
+}
+
+.creative-caption {
+  position: absolute;
+  bottom: 25px;
+  left: 25px;
+  right: 20px;
+  z-index: 2;
+}
+
+.creative-caption h3 {
+  font-family: var(--serif);
+  font-size: 27px;
+  font-weight: 500;
+  color: var(--cream);
+}
+
+.creative-caption p {
+  font-size: 11px;
+  color: #ddd;
+  margin-top: 8px;
+}
+
+@media(max-width:850px) {
+  .creative-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media(max-width:550px) {
+  .creative-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .creative-card {
+    height: 340px;
+  }
+}
+
+/* TRAVEL GALLERY */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr 1fr;
+  grid-template-rows: 230px 230px;
+  gap: 15px;
+}
+
+.gallery-item {
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  background: var(--surface);
+}
+
+.gallery-item:first-child {
+  grid-row: span 2;
+}
+
+.gallery-item img {
+  height: 100%;
+  transition: .6s;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.07);
+  filter: brightness(.75);
+}
+
+.gallery-item::after {
+  content: "VIEW IMAGE ↗";
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  color: white;
+  font-size: 10px;
+  letter-spacing: 2px;
+  opacity: 0;
+  transition: .3s;
+}
+
+.gallery-item:hover::after {
+  opacity: 1;
+}
+
+/* LIGHTBOX */
+
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.94);
+  z-index: 3000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+#lightbox.open {
+  display: flex;
+}
+
+#lightbox img {
+  max-width: 100%;
+  max-height: 85vh;
+  width: auto;
+  object-fit: contain;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  color: white;
+  background: none;
+  border: none;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+/* SKILLS */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.skill {
+  background: var(--bg);
+  padding: 30px;
+  font-size: 14px;
+  transition: .3s;
+}
+
+.skill:hover {
+  background: var(--surface);
+  color: var(--gold);
+}
+
+.skill span {
+  display: block;
+  color: var(--gold);
+  font-size: 10px;
+  margin-bottom: 15px;
+}
+
+/* INTERESTS */
+
+.interest-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+}
+
+.interest {
+  padding: 32px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  transition: .3s;
+}
+
+.interest:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+}
+
+.interest h3 {
+  font-family: var(--serif);
+  font-size: 27px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.interest p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* CV */
+
+.cv-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.cv-card h3 {
+  font-family: var(--serif);
+  font-size: 35px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.cv-card p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* CONTACT */
+
+.contact-section {
+  text-align: center;
+  padding: 135px 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(184,155,106,.10), transparent 55%),
+    var(--bg);
+}
+
+.contact-section h2 {
+  font-family: var(--serif);
+  font-size: clamp(45px,8vw,90px);
+  font-weight: 500;
+}
+
+.contact-section p {
+  color: var(--muted);
+  margin-top: 20px;
+  line-height: 1.8;
+}
+
+.social-link {
+  display: inline-block;
+  margin-top: 28px;
+  color: var(--gold);
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 6px;
+  font-size: 13px;
+}
+
+footer {
+  padding: 30px 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* REVEAL */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px) {
+  .menu-btn {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    padding: 25px 6%;
+    background: var(--surface);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+  }
+
+  .about-grid,
+  .project-card {
+    grid-template-columns: 1fr;
+  }
+
+  .about-image {
+    width: min(78vw, 360px);
+  }
+
+  .creative-grid,
+  .interest-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .edu-item {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .edu-score {
+    text-align: left;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 250px 200px 200px;
+  }
+
+  .gallery-item:first-child {
+    grid-row: span 2;
+  }
+}
+
+@media(max-width:550px) {
+  .hero h1 {
+    letter-spacing: -2px;
+  }
+
+  .section {
+    padding: 80px 0;
+  }
+
+  .creative-grid,
+  .interest-grid,
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .creative-card {
+    height: 340px;
+  }
+
+  .edu-item {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 210px 160px 160px;
+  }
+
+  .gallery-item:first-child {
+    grid-row: span 2;
+  }
+
+  .cv-card {
+    padding: 30px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-bottom {
+    font-size: 8px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+  }
+
+  .project-info {
+    padding: 30px;
+  }
+
+  .creative-card {
+    min-height: 270px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* PERSONAL PHOTO + TYPEWRITER POLISH */
+.hero-subtitle {
+  min-height: 1.5em;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--cream);
+}
+
+.typewriter-text {
+  color: var(--gold);
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  margin-left: 5px;
+  vertical-align: -2px;
+  background: var(--gold);
+  animation: cursorBlink .8s steps(2, start) infinite;
+}
+
+@keyframes cursorBlink {
+  to { visibility: hidden; }
+}
+
+button:focus-visible,
+a:focus-visible,
+.gallery-item:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 5px;
+}
+
+.gallery-item img {
+  cursor: zoom-in;
+}
+
+@media(max-width:850px) {
+  .nav-links {
+    box-shadow: 0 18px 35px rgba(0,0,0,.22);
+  }
+}
+
+</style>
+</head>
+
+<body class="loading">
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="loader-name">RISHAV KUMAR</div>
+  <div class="loader-line">
+    <div class="loader-progress"></div>
+  </div>
+  <div class="loader-caption">A JOURNEY OF IDEAS</div>
+</div>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="#home" class="logo">RISHAV</a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#projects">Ventures</a></li>
+      <li><a href="#creative">Creative</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">☰</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<!-- HERO PHOTO: Save your own wide/landscape photo as images/rishav-hero.jpg.
+     This photo is used as the background behind your name. -->
+<header class="hero" id="home">
+  <div class="container hero-content">
+    <div class="eyebrow">PERSONAL PORTFOLIO · 2026</div>
+
+    <h1>RISHAV <span>KUMAR.</span></h1>
+
+    <div class="hero-subtitle" aria-label="Business, Creativity, Exploration">
+      <span class="typewriter-text" id="typewriterText"></span><span class="typewriter-cursor" aria-hidden="true"></span>
+    </div>
+
+    <p class="hero-description">
+      A business student, aspiring entrepreneur and explorer
+      passionate about discovering ideas, building projects
+      and collecting stories along the way.
+    </p>
+
+    <a href="#about" class="primary-btn">
+      EXPLORE MY JOURNEY ↗
+    </a>
+  </div>
+
+  <div class="hero-bottom">
+    <span>BASED IN INDIA</span>
+    <span>SCROLL TO EXPLORE ↓</span>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="eyebrow">01 / ABOUT ME</div>
+
+    <div class="about-grid">
+      <!-- ABOUT PHOTO: Save your original, unedited portrait as images/rishav-about.jpg.
+           It will be displayed as a circular crop; the image itself is not edited or filtered. -->
+      <div class="about-image reveal">
+        <img src="images/rishav-about.jpg.jpeg" alt="Portrait of Rishav Kumar">
+      </div>
+
+      <div class="about-text reveal">
+        <h2 class="section-title">
+          A little about <span class="gold">who I am.</span>
+        </h2>
+
+        <p>
+          I'm Rishav Kumar, currently pursuing a BBA in
+          Digital Business and Entrepreneurship from the
+          Indian Institute of Management Bangalore.
+        </p>
+
+        <p>
+          I am interested in the intersection of business,
+          finance, creativity and entrepreneurship. I enjoy
+          exploring new ideas, understanding how businesses
+          work and turning concepts into meaningful projects.
+        </p>
+
+        <p>
+          Beyond academics, I have a passion for travelling,
+          visual storytelling and discovering different cultures.
+          I believe every place has a story worth capturing.
+        </p>
+
+        <p>
+          I'm constantly learning, experimenting and looking
+          for opportunities to create something meaningful.
+        </p>
+
+        <div class="about-quote">
+          "Curiosity is where every great journey begins."
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section" id="education">
+  <div class="container">
+    <div class="eyebrow">02 / EDUCATION</div>
+
+    <h2 class="section-title">
+      The learning <span class="gold">journey.</span>
+    </h2>
+
+    <div class="education-list">
+      <div class="edu-item reveal">
+        <div class="edu-date">2026 — 2029</div>
+        <div>
+          <h3>Indian Institute of Management Bangalore</h3>
+          <p>BBA – Digital Business and Entrepreneurship</p>
+          <p>Exploring digital business, entrepreneurship,
+             management and the evolving world of business.</p>
+        </div>
+        <div class="edu-score">Currently Pursuing</div>
+      </div>
+
+      <div class="edu-item reveal">
+        <div class="edu-date">2024</div>
+        <div>
+          <h3>Delhi Public School, Bokaro</h3>
+          <p>Class XII – Senior Secondary Education</p>
+          <p>PCB (Physics, Chemistry and Biology) stream.</p>
+        </div>
+        <div class="edu-score">88%</div>
+      </div>
+
+      <div class="edu-item reveal">
+        <div class="edu-date">Secondary</div>
+        <div>
+          <h3>Class X</h3>
+          <p>Secondary Education</p>
+        </div>
+        <div class="edu-score">89%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENTREPRENEURSHIP -->
+<section class="section" id="projects">
+  <div class="container">
+    <div class="eyebrow">03 / PROJECTS & ENTREPRENEURSHIP</div>
+
+    <h2 class="section-title">
+      Ideas into <span class="gold">experiences.</span>
+    </h2>
+
+    <div class="project-card reveal">
+<div class="project-info">
+        <div class="eyebrow">FOOD · CULTURE · BUSINESS</div>
+        <h3>ARUMANAM</h3>
+
+        <p class="gold">South Indian Café Venture</p>
+
+        <p>
+          ARUMANAM is a South Indian café concept inspired
+          by the flavours, traditions and food culture of
+          South India, combined with a modern café experience.
+        </p>
+
+        <p>
+          The idea is to bring authentic South Indian food
+          culture into a contemporary space, creating an
+          experience that goes beyond just food.
+        </p>
+
+        <div class="tags">
+          <span class="tag">Brand Identity</span>
+          <span class="tag">Market Research</span>
+          <span class="tag">Business Planning</span>
+          <span class="tag">Financial Planning</span>
+          <span class="tag">Customer Experience</span>
+        </div>
+
+        <a href="arumanam.html" class="text-link">
+          EXPLORE THE CASE STUDY ↗
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREATIVE SIDE -->
+<section class="section" id="creative">
+  <div class="container">
+
+    <div class="eyebrow">04 / CREATIVE SIDE</div>
+
+    <h2 class="section-title">
+      Stories beyond <span class="gold">business.</span>
+    </h2>
+
+    <div class="creative-grid">
+
+      <!-- PHOTOGRAPHY -->
+      <div class="creative-card reveal">
+        <img
+          src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=900&q=85"
+          alt="Camera and photography"
+          loading="lazy">
+
+        <div class="creative-caption">
+          <h3>Photography</h3>
+          <p>Composition · Framing · Lighting</p>
+        </div>
+      </div>
+
+      <!-- VIDEO EDITING -->
+      <div class="creative-card reveal">
+        <img
+          src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=900&q=85"
+          alt="Visual storytelling and photography"
+          loading="lazy">
+
+        <div class="creative-caption">
+          <h3>Video & Editing</h3>
+          <p>Visual Storytelling · Creativity</p>
+        </div>
+      </div>
+
+      <!-- TRAVEL -->
+      <div class="creative-card reveal">
+        <img
+          src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=900&q=85"
+          alt="Beautiful travel destination"
+          loading="lazy">
+
+        <div class="creative-caption">
+          <h3>Travel & Exploration</h3>
+          <p>Places · Cultures · Experiences</p>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="muted" style="margin-top:35px;line-height:2;font-size:14px;">
+      I enjoy shooting videos, exploring the visual side
+      of storytelling, documenting experiences and discovering
+      new cultures. Every journey offers a new perspective
+      and a story worth sharing.
+    </p>
+
+    <a class="primary-btn"
+       href="https://www.instagram.com/bhai.berrry/"
+       target="_blank"
+       rel="noopener noreferrer">
+      EXPLORE MY INSTAGRAM ↗
+    </a>
+
+  </div>
+</section>
+
+<!-- TRAVEL GALLERY -->
+<section class="section" id="gallery">
+  <div class="container">
+    <div class="eyebrow">05 / TRAVEL & EXPLORATION</div>
+
+    <h2 class="section-title">
+      The world through <span class="gold">my lens.</span>
+    </h2>
+
+    <p class="muted" style="max-width:600px;line-height:1.9;margin-bottom:35px;">
+      Every destination has its own character.
+      A collection of places, perspectives and visual moments.
+      These moments are captured through my own lens.
+    </p>
+
+    <!-- GALLERY PHOTOS: Add your own photos using these filenames (no stock photos). -->
+    <div class="gallery-grid">
+      <div class="gallery-item" tabindex="0" role="button" aria-label="Open photograph">
+        <img src="images/gallery-01.jpg.jpeg" alt="Personal travel photograph 1">
+      </div>
+      <div class="gallery-item" tabindex="0" role="button" aria-label="Open photograph">
+        <img src="images/gallery-02.jpg.jpeg" alt="Personal travel photograph 2">
+      </div>
+      <div class="gallery-item" tabindex="0" role="button" aria-label="Open photograph">
+        <img src="images/gallery-03.jpg.jpeg" alt="Personal travel photograph 3">
+      </div>
+      <div class="gallery-item" tabindex="0" role="button" aria-label="Open photograph">
+        <img src="images/gallery-04.jpg.jpeg" alt="Personal travel photograph 4">
+      </div>
+      <div class="gallery-item" tabindex="0" role="button" aria-label="Open photograph">
+        <img src="images/gallery-05.jpg.jpeg" alt="Personal travel photograph 5">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close image">×</button>
+  <img id="lightboxImage" src="" alt="Enlarged gallery photograph">
+</div>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="container">
+    <div class="eyebrow">06 / SKILLS & INTERESTS</div>
+
+    <h2 class="section-title">
+      Things I <span class="gold">explore.</span>
+    </h2>
+
+    <div class="skills-grid">
+      <div class="skill"><span>01</span>Business Research</div>
+      <div class="skill"><span>02</span>Entrepreneurship</div>
+      <div class="skill"><span>03</span>Brand Development</div>
+      <div class="skill"><span>04</span>Business Concept Development</div>
+      <div class="skill"><span>05</span>Marketing Strategy</div>
+      <div class="skill"><span>06</span>Financial Planning – Project Interest</div>
+      <div class="skill"><span>07</span>Direction of Photography</div>
+      <div class="skill"><span>08</span>Video Shooting</div>
+      <div class="skill"><span>09</span>Video Editing – Currently Learning</div>
+      <div class="skill"><span>10</span>Visual Storytelling</div>
+      <div class="skill"><span>11</span>Creative Exploration</div>
+    </div>
+  </div>
+</section>
+
+<!-- BEYOND ACADEMICS -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">07 / BEYOND ACADEMICS</div>
+
+    <h2 class="section-title">
+      Life outside <span class="gold">the classroom.</span>
+    </h2>
+
+    <div class="interest-grid">
+      <div class="interest reveal">
+        <div class="eyebrow">01</div>
+        <h3>Basketball</h3>
+        <p>
+          I enjoy playing basketball and appreciate the
+          discipline, teamwork and competitive spirit
+          that comes with the game.
+        </p>
+      </div>
+
+      <div class="interest reveal">
+        <div class="eyebrow">02</div>
+        <h3>Photography</h3>
+        <p>
+          I have participated in photography competitions
+          and enjoy exploring creative ways to capture moments.
+        </p>
+      </div>
+
+      <div class="interest reveal">
+        <div class="eyebrow">03</div>
+        <h3>Exploration</h3>
+        <p>
+          Always curious about new places, experiences,
+          cultures and stories.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CV -->
+<section class="section" id="cv">
+  <div class="container">
+    <div class="eyebrow">08 / PROFESSIONAL PROFILE</div>
+
+    <div class="cv-card reveal">
+      <div>
+        <h3>My professional journey.</h3>
+        <p>
+          Interested in my academic background, projects
+          and experience? Get in touch to request my
+          professional profile.
+        </p>
+      </div>
+
+      <a href="#contact" class="primary-btn">
+        REQUEST MY CV ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="eyebrow">09 / LET'S CONNECT</div>
+
+    <h2>
+      Let's create<br>
+      <span class="gold">something meaningful.</span>
+    </h2>
+
+    <p>
+      Always open to connecting with people,
+      exploring creative collaborations and
+      discussing interesting business ideas.
+    </p>
+
+    <a href="https://www.instagram.com/bhai.berrry/"
+       target="_blank" rel="noopener noreferrer"
+       class="primary-btn">
+      CONNECT ON INSTAGRAM ↗
+    </a>
+
+    <p style="font-size:11px;margin-top:30px;">
+      Hazaribag, Jharkhand, India
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© 2026 Rishav Kumar. All Rights Reserved.</span>
+    <span>BUSINESS · CREATIVITY · EXPLORATION</span>
+  </div>
+</footer>
+
+<script>
+
+// HERO TYPEWRITER: BUSINESS. -> CREATIVITY. -> EXPLORATION. (loops continuously)
+const typewriterTarget = document.getElementById("typewriterText");
+const typewriterWords = ["BUSINESS.", "CREATIVITY.", "EXPLORATION."];
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (typewriterTarget) {
+  if (reduceMotion) {
+    typewriterTarget.textContent = "BUSINESS.";
+  } else {
+    let wordIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function runTypewriter() {
+      const word = typewriterWords[wordIndex];
+
+      if (!deleting) {
+        charIndex++;
+        typewriterTarget.textContent = word.slice(0, charIndex);
+
+        if (charIndex === word.length) {
+          deleting = true;
+          setTimeout(runTypewriter, 1150);
+          return;
+        }
+        setTimeout(runTypewriter, 105);
+      } else {
+        charIndex--;
+        typewriterTarget.textContent = word.slice(0, charIndex);
+
+        if (charIndex === 0) {
+          deleting = false;
+          wordIndex = (wordIndex + 1) % typewriterWords.length;
+          setTimeout(runTypewriter, 320);
+          return;
+        }
+        setTimeout(runTypewriter, 55);
+      }
+    }
+    runTypewriter();
+  }
+}
+
+// PRELOADER
+window.addEventListener("load", () => {
+  const preloader = document.getElementById("preloader");
+
+  setTimeout(() => {
+    preloader.classList.add("hide");
+    document.body.classList.remove("loading");
+  }, 1600);
+});
+
+// NAVIGATION
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+const navbar = document.getElementById("navbar");
+
+menuBtn.addEventListener("click", () => {
+  const isOpen = navLinks.classList.toggle("active");
+  menuBtn.textContent = isOpen ? "×" : "☰";
+  menuBtn.setAttribute("aria-expanded", String(isOpen));
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("active");
+    menuBtn.textContent = "☰";
+    menuBtn.setAttribute("aria-expanded", "false");
+  });
+});
+
+window.addEventListener("scroll", () => {
+  navbar.classList.toggle("scrolled", window.scrollY > 40);
+});
+
+// IMAGE LIGHTBOX
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const closeLightbox = document.getElementById("lightboxClose");
+
+document.querySelectorAll(".gallery-item img").forEach(img => {
+  img.addEventListener("click", () => {
+    lightboxImage.src = img.src;
+    lightboxImage.alt = img.alt;
+    lightbox.classList.add("open");
+    document.body.style.overflow = "hidden";
+    closeLightbox.focus();
+  });
+});
+
+function closePreview() {
+  lightbox.classList.remove("open");
+  document.body.style.overflow = "";
+  lightboxImage.src = "";
+}
+
+closeLightbox.addEventListener("click", closePreview);
+
+lightbox.addEventListener("click", event => {
+  if (event.target === lightbox) closePreview();
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") {
+    closePreview();
+    navLinks.classList.remove("active");
+    menuBtn.textContent = "☰";
+    menuBtn.setAttribute("aria-expanded", "false");
+  }
+
+  if ((event.key === "Enter" || event.key === " ") &&
+      event.target.classList.contains("gallery-item")) {
+    event.preventDefault();
+    const image = event.target.querySelector("img");
+    if (image) image.click();
+  }
+});
+
+// GSAP SCROLL ANIMATIONS
+if (window.gsap && window.ScrollTrigger &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from(".hero-content > *", {
+    opacity: 0,
+    y: 40,
+    duration: 1,
+    stagger: .18,
+    ease: "power3.out",
+    delay: 1.6
+  });
+
+  gsap.utils.toArray(".reveal").forEach(element => {
+    gsap.to(element, {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: element,
+        start: "top 88%",
+        once: true
+      }
+    });
+  });
+} else {
+  document.querySelectorAll(".reveal").forEach(element => {
+    element.style.opacity = "1";
+    element.style.transform = "none";
+  });
+}
+</script>
+
+</body>
+</html>
